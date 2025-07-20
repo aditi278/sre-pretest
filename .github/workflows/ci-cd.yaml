@@ -31,7 +31,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: terraform-state
-          destination: $GITHUB_WORKSPACE/gke-cluster
+          path: $GITHUB_WORKSPACE/gke-cluster
+        continue-on-error: true
 
       - name: Terraform Apply
         run: terraform -chdir="$GITHUB_WORKSPACE/gke-cluster" apply -auto-approve
