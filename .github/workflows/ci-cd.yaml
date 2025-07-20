@@ -20,6 +20,7 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GCP_APIKEY }}' 
+          project_id: sre-pretest
 
       - name: Terraform Init
         run: terraform -chdir="$GITHUB_WORKSPACE/gke-cluster" init
