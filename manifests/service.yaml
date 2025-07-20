@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sre-pretest-service
+spec:
+  selector:
+    app: sre-pretest
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer

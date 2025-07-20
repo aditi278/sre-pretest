@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "sre-pretest.fullname" . }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: {{ include "sre-pretest.name" . }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}

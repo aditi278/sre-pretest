@@ -1,0 +1,5 @@
+project_id = "SRE Pretest"
+cluster_name = "sre-pretest-cluster"
+region = "us-central1"
+compute_network = "sre-pretest-network"
+compute_subnetwork = "sre-pretest-subnetwork"
