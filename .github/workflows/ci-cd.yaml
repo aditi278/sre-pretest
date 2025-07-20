@@ -22,22 +22,19 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -var="gcp_credentials=${{secrets.GCP_APIKEY}}"
       
-      - name: Download tfstate from artifact
-        uses: cloudposse/github-action-terraform-state@v2
+      - name: Download Terraform state
+        uses: actions/download-artifact@v4
         with:
-          operation: download
-          location: artifact
-          directory: .
+          name: terraform-state
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -var="gcp_credentials=${{secrets.GCP_APIKEY}}"
       
-      - name: Upload tfstate to artifact
-        uses: cloudposse/github-action-terraform-state@v2
+      - name: Upload Terraform state
+        uses: actions/upload-artifact@v4
         with:
-          operation: upload
-          location: artifact
-          directory: .
+          name: terraform-state
+          path: ./terraform.tfstate
 
   build:
 

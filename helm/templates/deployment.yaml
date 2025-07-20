@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "sre-pretest.fullname" . }}
+  name: {{ include "sre-pretest.name" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -13,7 +13,7 @@ spec:
         app: {{ include "sre-pretest.name" . }}
     spec:
       containers:
-        - name: nginx
+        - name: {{ include "sre-pretest.name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
