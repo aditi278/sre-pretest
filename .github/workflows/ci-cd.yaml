@@ -22,10 +22,10 @@ jobs:
           credentials_json: '${{ secrets.GCP_APIKEY }}' 
 
       - name: Terraform Init
-        run: terraform init -chdir="$GITHUB_WORKSPACE/gke-cluster"
+        run: terraform -chdir="$GITHUB_WORKSPACE/gke-cluster" init
 
       - name: Terraform Plan
-        run: terraform plan -chdir="$GITHUB_WORKSPACE/gke-cluster"
+        run: terraform -chdir="$GITHUB_WORKSPACE/gke-cluster" plan
       
       - name: Download Terraform state
         uses: actions/download-artifact@v4
@@ -34,13 +34,13 @@ jobs:
           destination: $GITHUB_WORKSPACE/gke-cluster
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -chdir="$GITHUB_WORKSPACE/gke-cluster"
+        run: terraform -chdir="$GITHUB_WORKSPACE/gke-cluster" apply -auto-approve
       
       - name: Upload Terraform state
         uses: actions/upload-artifact@v4
         with:
           name: terraform-state
-          path: ./terraform.tfstate
+          path: $GITHUB_WORKSPACE/gke-cluster/terraform.tfstate
 
   build:
 
