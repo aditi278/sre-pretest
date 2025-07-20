@@ -22,7 +22,9 @@ jobs:
           credentials_json: '${{ secrets.GCP_APIKEY }}' 
 
       - name: Terraform Init
-        run: terraform init
+        run: |
+          cd "$GITHUB_WORKSPACE/gke-cluster"
+          terraform init
 
       - name: Terraform Plan
         run: terraform plan
