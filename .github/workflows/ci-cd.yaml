@@ -85,7 +85,7 @@ jobs:
 
     - name: Configure GKE Credentials
       run: |
-        gcloud container clusters get-credentials "sre-pretest" --project sre-pretest
+        gcloud container clusters get-credentials "sre-pretest" --project sre-pretest --location ${{ vars.GCP_LOCATION }}
     
     - name: Deploy Helm chart
       run: |
