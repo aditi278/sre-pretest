@@ -74,13 +74,16 @@ jobs:
         service_account_key: ${{ secrets.GCP_APIKEY }}
         project_id: sre-pretest
 
-    - name: Configure GKE Credentials
-      run: |
-        gcloud container clusters get-credentials "sre-pretest" --project sre-pretest
-
     - name: Install Helm
       uses: azure/setup-helm@v4
 
+    - name: Test connection
+      run: gcloud container clusters list
+
+    - name: Configure GKE Credentials
+      run: |
+        gcloud container clusters get-credentials "sre-pretest" --project sre-pretest
+    
     - name: Deploy Helm chart
       run: |
         helm upgrade --install sre-pretest "$GITHUB_WORKSPACE/helm" --set image.repository=${{vars.DOCKER_USERNAME}}/sre-pretest
