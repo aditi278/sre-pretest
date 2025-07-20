@@ -1,4 +1,4 @@
-project_id = "SRE Pretest"
+project_id = "sre-pretest"
 cluster_name = "sre-pretest-cluster"
 region = "us-central1"
 compute_network = "sre-pretest-network"
