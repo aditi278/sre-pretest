@@ -97,4 +97,5 @@ jobs:
     
     - name: Deploy Helm chart
       run: |
+        ls
         helm upgrade --install sre-pretest helm --set image.repository=${{vars.DOCKER_USERNAME}}/sre-pretest
