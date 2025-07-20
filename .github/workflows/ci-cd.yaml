@@ -72,11 +72,11 @@ jobs:
       uses: google-github-actions/setup-gcloud@v2
       with:
         service_account_key: ${{ secrets.GCP_APIKEY }}
-        project_id: "SRE Pretest"
+        project_id: sre-pretest
 
     - name: Configure GKE Credentials
       run: |
-        gcloud container clusters get-credentials "sre-pretest" --project "SRE Pretest"
+        gcloud container clusters get-credentials "sre-pretest" --project sre-pretest
 
     - name: Install Helm
       uses: azure/setup-helm@v4
