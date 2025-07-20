@@ -3,11 +3,6 @@ variable "project_id" {
     description = "Project ID in gcp account"
 }
 
-variable "gcp_credentials" {
-    type = string
-    description = "apikey file contents to access gcp account"
-}
-
 variable "cluster_name" {
     type = string
     description = "Name of kubernetes cluster in gcp"
