@@ -83,4 +83,4 @@ jobs:
 
     - name: Deploy Helm chart
       run: |
-        helm upgrade --install sre-pretest "$GITHUB_WORKSPACE/helm" --set image.repository=${{DOCKER_USERNAME}}/sre-pretest
+        helm upgrade --install sre-pretest "$GITHUB_WORKSPACE/helm" --set image.repository=${{vars.DOCKER_USERNAME}}/sre-pretest
