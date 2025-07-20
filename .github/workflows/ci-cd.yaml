@@ -35,14 +35,14 @@ jobs:
           path: $GITHUB_WORKSPACE/gke-cluster
         continue-on-error: true
 
-      - name: Terraform Apply
-        run: terraform -chdir="$GITHUB_WORKSPACE/gke-cluster" apply -auto-approve
+      #- name: Terraform Apply
+      #  run: terraform -chdir="$GITHUB_WORKSPACE/gke-cluster" apply -auto-approve
       
       - name: Upload Terraform state
         uses: actions/upload-artifact@v4
         with:
           name: terraform-state
-          path: $GITHUB_WORKSPACE/gke-cluster/terraform.tfstate
+          path: ./terraform.tfstate
 
   build:
 
@@ -92,7 +92,7 @@ jobs:
 
     - name: Configure GKE Credentials
       run: |
-        gcloud container clusters get-credentials "sre-pretest" --project sre-pretest --location ${{ vars.GCP_LOCATION }}
+        gcloud container clusters get-credentials "sre-pretest-cluster" --project sre-pretest --location ${{ vars.GCP_LOCATION }}
     
     - name: Deploy Helm chart
       run: |
